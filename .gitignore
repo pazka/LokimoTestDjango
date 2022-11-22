@@ -1,5 +1,7 @@
 # Django #
 data/
+data_bckp/
+
 *.log
 *.pot
 *.pyc

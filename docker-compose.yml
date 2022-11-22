@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   db:
+    container_name: lokimo_data
     image: postgres
     restart: unless-stopped
     environment:
@@ -12,12 +13,16 @@ services:
       - postgre-backup:/data/data-backup
 
   server:
+    container_name: lokimo_app
     build: .
     restart: unless-stopped
-    command: sh -c "python manage.py collectstatic --noinput  && uwsgi --ini mysite.uwsgi.ini"
+    command: sh -c "sleep 5 &&  \
+      python manage.py makemigrations models && \
+      python manage.py migrate && \
+      python manage.py collectstatic --noinput  && uwsgi --ini mysite.uwsgi.ini"
     volumes:
       - uwsgi_data:/tmp/uwsgi/
-      - web_static:/LokimoBackend/static/
+      - web_static:/LokimoTest/static/
     depends_on:
       - db
     environment:
@@ -28,6 +33,7 @@ services:
       - PG_PORT=5432
       - ENV=PROD
   nginx:
+    container_name: lokimo_nginx
     build: ./nginx
     restart: unless-stopped
     volumes:

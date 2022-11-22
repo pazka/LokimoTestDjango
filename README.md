@@ -6,7 +6,8 @@ Made to answer the [Lokimo Job Offer](https://lokimo.notion.site/Test-technique-
 
 ## Usage
 
-To run the app, you'll need to have docker installed and run the command `docker compose up`
+- To run the app, you'll need to have docker installed and run the command `docker compose up`
 
-The result should be an API exposed to request on the port defined in the `.env` file
+- The result should be an API exposed to request on the port defined in the `.env` file
 
+- To fetch data, use `docker exec -it lokimo_app python manage.py importdata`

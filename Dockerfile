@@ -10,7 +10,6 @@ RUN pip install GDAL==3.2.0
 
 COPY requirements.txt /
 COPY manage.py /
-COPY db_test.py /
 COPY ./mysite.uwsgi.ini /
 
 EXPOSE ${API_PORT}

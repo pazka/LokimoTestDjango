@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   db:
+    container_name: lokimo_data
     image: postgres
     restart: unless-stopped
     environment:
@@ -12,13 +13,17 @@ services:
       - postgre-backup:/data/data-backup
 
   server:
+    container_name: lokimo_app
     build: .
     restart: unless-stopped
-    command: sh -c "sleep 5 && python manage.py runserver 0.0.0.0:${API_PORT}"
+    command: sh -c "sleep 5 &&  \
+      python manage.py makemigrations models && \
+      python manage.py migrate && \
+      python manage.py runserver 0.0.0.0:${API_PORT}"
     volumes:
       - ./LokimoTest:/LokimoTest
       - uwsgi_data:/tmp/uwsgi/
-      - web_static:/LokimoBackend/static/
+      - web_static:/LokimoTest/static/
     ports:
       - "${API_PORT}:${API_PORT}"
     environment:

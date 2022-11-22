@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'world',
-    'LokimoTest.LokimoTest.models',
-    'drf_yasg'
+    'drf_yasg',
+    'LokimoTest',
+    'LokimoTest.LokimoTest.models'
 ]
 
 if not get_config("debug"):
@@ -61,7 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+CONN_HEALTH_CHECKS=True
 ROOT_URLCONF = 'LokimoTest.urls'
 
 TEMPLATES = [

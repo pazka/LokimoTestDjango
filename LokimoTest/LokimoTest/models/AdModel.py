@@ -16,7 +16,7 @@ class Ad(models.Model):
     first_date = models.DateField()
 
     meter_square = models.FloatField()
-    position = models.JSONField()
+    position = models.JSONField(null=True)
     price = models.FloatField()
     rooms = models.FloatField()
     surface = models.FloatField()
