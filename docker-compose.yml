@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=LokimoTest
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - postgre-backup:/data/data-backup
+
+  server:
+    build: .
+    restart: unless-stopped
+    command: sh -c "python manage.py collectstatic --noinput  && uwsgi --ini mysite.uwsgi.ini"
+    volumes:
+      - uwsgi_data:/tmp/uwsgi/
+      - web_static:/LokimoBackend/static/
+    depends_on:
+      - db
+    environment:
+      - PG_DB=LokimoTest
+      - PG_USER=admin
+      - PG_MDP=admin
+      - PG_HOST=db
+      - PG_PORT=5432
+      - ENV=PROD
+  nginx:
+    build: ./nginx
+    restart: unless-stopped
+    volumes:
+      - uwsgi_data:/tmp/uwsgi/
+      - web_static:/var/www/mysite/assets/:ro
+    ports:
+      - "${API_PORT}:80"
+    depends_on:
+      - server
+
+volumes:
+  uwsgi_data:
+  web_static:
+  postgre-backup:

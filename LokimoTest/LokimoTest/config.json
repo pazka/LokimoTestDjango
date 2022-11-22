@@ -1,0 +1,46 @@
+{
+  "__comment" : "This file is used by config.py",
+  "ENV":"${ENV}",
+  "DEV_LOCAL": {
+    "__comment" : "Config used if you are running the server with a DB on your machine, without using nginx etc... ",
+    "project_name": "LOKIMO_DEV",
+    "debug": true,
+    "dev": true,
+    "wrap_errors": false,
+    "db": {
+      "name": "LokimoTest",
+      "username": "admin",
+      "password": "admin",
+      "address": "localhost",
+      "port": "5432"
+    }
+  },
+  "DEV_DOCKER": {
+    "__comment" : "Config used if you are running the server with a DB on docker compose, without using nginx etc... ",
+    "project_name": "LOKIMO_DEV_DOCKER",
+    "debug": true,
+    "dev": true,
+    "wrap_errors": false,
+    "db": {
+      "name": "${PG_DB}",
+      "username": "${PG_USER}",
+      "password": "${PG_MDP}",
+      "address": "${PG_HOST}",
+      "port": "${PG_PORT}"
+    }
+  },
+  "PROD": {
+    "__comment" : "Config used if you are running the server in a standalone mode, with the DB incorporated to the docker node, with nginx wsgi etc...",
+    "project_name": "Lokimo Test Prod",
+    "debug": true,
+    "dev": false,
+    "wrap_errors": true,
+    "db": {
+      "name": "${PG_DB}",
+      "username": "${PG_USER}",
+      "password": "${PG_MDP}",
+      "address": "${PG_HOST}",
+      "port": "${PG_PORT}"
+    }
+  }
+}

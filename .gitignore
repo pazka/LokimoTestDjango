@@ -1,11 +1,15 @@
 # Django #
+data/
 *.log
 *.pot
 *.pyc
 __pycache__
 db.sqlite3
 media
-
+.idea/**/*
+.idea/*
+.idea
+vsc.xml
 # Backup files # 
 *.bak 
 
