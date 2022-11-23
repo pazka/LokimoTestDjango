@@ -30,7 +30,18 @@ Thus `127.0.0.1:4789/ad/search?city=44009,44047&iris=440090101` works as well
 
 ### Radius
 
-The search is just another criteria in the 'ad/search' API :
+The search by radius is just another criteria in the 'ad/search' API :
 `127.0.0.1:4789/ad/search?x=47.2155884&y=-1.4653951&r=500`
 
 Will works and you can compose this parameters with the previous ones
+
+### Average Summary
+
+The average report re-uses the search mecanism but change the report :
+
+`127.0.0.1:4789/ad/summary?x=47.2155884&y=-1.4653951&r=500` 
+
+works as well as
+`127.0.0.1:4789/ad/summary?city=44009,44047&iris=440090101`
+
+
