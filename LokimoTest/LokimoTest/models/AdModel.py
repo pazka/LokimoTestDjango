@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class Ad(models.Model):
@@ -16,7 +16,7 @@ class Ad(models.Model):
     first_date = models.DateField()
 
     meter_square = models.FloatField()
-    position = models.JSONField(null=True)
+    position = models.PointField(srid=4326, null=True, blank=True)
     price = models.FloatField()
     rooms = models.FloatField()
     surface = models.FloatField()

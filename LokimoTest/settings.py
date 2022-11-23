@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'LokimoTest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': get_config('db.name'),
         'USER': get_config('db.username'),
         'PASSWORD': get_config('db.password'),
