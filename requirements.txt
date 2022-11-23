@@ -7,3 +7,4 @@ psycopg2==2.9.3
 psycopg2_binary==2.9.2
 django-request-logging==0.7.5
 world==5.0.1
+pyyaml

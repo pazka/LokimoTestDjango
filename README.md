@@ -11,3 +11,20 @@ Made to answer the [Lokimo Job Offer](https://lokimo.notion.site/Test-technique-
 - The result should be an API exposed to request on the port defined in the `.env` file
 
 - To fetch data, use `docker exec -it lokimo_app python manage.py importdata`
+
+- API exposed at : http://127.0.0.1:4789/swagger/ , only on debug configuration
+
+## Search 
+
+### Commune 
+
+Using any tool you want : 
+
+`127.0.0.1:4789/ad/search?city=44009,44047` will return ads in the city 44009 or 44047
+`127.0.0.1:4789/ad/search?city=44009` will return ads in the city 44009 
+
+But due to django capabilities, it works with any first order property of the model. So 
+
+`127.0.0.1:4789/ad/search?city=44009,44047&iris=440090101` works as well
+
+### Radius
