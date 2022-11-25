@@ -11,7 +11,7 @@ the [Lokimo Job Offer](https://lokimo.notion.site/Test-technique-d-veloppeur-bac
 
 - The result should be an API exposed to request on the port defined in the `.env` file, for this readme its `4789`
 
-- To fetch data, use `docker exec -it lokimo_app python manage.py importdata`
+- To feed the DB, use `docker exec -it lokimo_app python manage.py importdata`
 
 - API exposed at : http://127.0.0.1:4789/swagger/ , only on debug configuration. As you'll see, I created the endpoints by respecting REST guidelines. 
 
