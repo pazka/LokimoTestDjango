@@ -13,7 +13,7 @@ the [Lokimo Job Offer](https://lokimo.notion.site/Test-technique-d-veloppeur-bac
 
 - To fetch data, use `docker exec -it lokimo_app python manage.py importdata`
 
-- API exposed at : http://127.0.0.1:4789/swagger/ , only on debug configuration
+- API exposed at : http://127.0.0.1:4789/swagger/ , only on debug configuration. As you'll see, I created the endpoints by respecting REST guidelines. 
 
 ## Search
 
@@ -37,7 +37,7 @@ Will works and you can compose this parameters with the previous ones
 
 ### Average Summary
 
-The average report re-uses the search mecanism but change the report :
+The average report re-uses the search mecanism but changes the report :
 
 `127.0.0.1:4789/ad/summary?x=47.2155884&y=-1.4653951&r=500`
 
